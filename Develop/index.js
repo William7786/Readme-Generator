@@ -1,6 +1,11 @@
 
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
+const fs = require ("fs");
+const markdown = require ("./utils/generateMarkdown")
+const utils = require("util")
+const writeFileSync = .promisify(fs.writeFile)
+
 // TODO: Create an array of questions for user input
 const questions = [
     inquirer
@@ -34,6 +39,21 @@ const questions = [
     },
     {
         type: 'input',
+        message: 'Who contributed to the project?',
+        name: 'contr'
+    },
+    {
+        type: 'input',
+        message: 'What ways can this project be used?',
+        name: 'Usage'
+    },
+    {
+        type: 'input',
+        message: 'What required licenses are there?',
+        name: 'licenses'
+    },
+    {
+        type: 'input',
         message: 'What is the name of your Github?',
         name: 'Github'
     }
@@ -45,10 +65,20 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  
+    
+}
 
-// TODO: Create a function to initialize app
-function init() {}
+// // TODO: Create a function to initialize app
+async function init() {
+try{
+const answers = await questions()
+const generate = generateRM(answers)
+await writeFileSync ('./New/README.md', generate)
+}catch(error){
+console.log("an error has occored")
+}}
 
 // Function call to initialize app
 init();
