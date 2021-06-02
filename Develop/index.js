@@ -2,7 +2,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require ("fs");
-// const markdown = require ("./utils/generateMarkdown")
 const utils = require("util");
 const generateMarkdown = require("./utils/generateMarkdown");
 const writeFileSync = utils.promisify(fs.writeFile)
@@ -37,7 +36,7 @@ const questions = [
     {
         type: 'input',
         message: 'What installation instructions do you have for users?',
-        name: 'Instructions'
+        name:'Instructions'
     },
     {
         type: 'input',
@@ -66,16 +65,17 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-fs.writeToFile(fileName, data , function(error) {
+function writeToFile (fileName, data){
+fs.writeFile(fileName, data , function(error) {
   console.log(data)
-  console.log(fileName)
+  
   if(error){
       return console.log(error)
   } else {
       console.log ("No errors here")
   }
     
-});
+})};
 
 // // TODO: Create a function to initialize app
 function init() {

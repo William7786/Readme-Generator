@@ -13,8 +13,25 @@ function renderLicenseSection(license) {}
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return ` ${data.Title}
-  
-  <h1 align = "right">  <h1>
+  ${data.name}
+  #TOC
+  + {installation}(#installation)
+  + {usage}(#usage)
+  + {liscense}(#liscense)
+  + {contrabutions}(#contrabutions)
+  + {tests}(#tests)
+  + {Questions}(#questions)
+  + {Installation}(installation)
+ 
+  #Install 
+  Install these to run this application.
+  ${data.Instructions}
+  #Usage
+  To succsessfully run this app ${data.Usage}
+  #License
+  This project is under the ${data.licenses} license.
+  #Contributers: ${data.cont}
+
 `;
 }
 
