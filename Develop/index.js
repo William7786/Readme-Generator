@@ -4,10 +4,10 @@ const inquirer = require("inquirer");
 const fs = require ("fs");
 const markdown = require ("./utils/generateMarkdown")
 const utils = require("util")
-const writeFileSync = .promisify(fs.writeFile)
+const writeFileSync = utils.promisify(fs.writeFile)
 
 // TODO: Create an array of questions for user input
-const questions = [
+function questions () {
     inquirer
   .prompt([
     {
@@ -62,7 +62,7 @@ const questions = [
   
 
   
-];
+};
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
@@ -74,10 +74,10 @@ function writeToFile(fileName, data) {
 async function init() {
 try{
 const answers = await questions()
-const generate = generateRM(answers)
+const generate = markdown(answers)
 await writeFileSync ('./New/README.md', generate)
 }catch(error){
-console.log("an error has occored")
+console.log(error)
 }}
 
 // Function call to initialize app
