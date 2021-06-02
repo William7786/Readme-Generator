@@ -18,7 +18,7 @@ const questions = [
     {
       type: 'input',
       message: 'What is your name?',
-      name: 'Your name',
+      name: 'Yourname',
       
     },
 
@@ -81,7 +81,7 @@ fs.writeFile(fileName, data , function(error) {
 function init() {
 inquirer.prompt(questions)
  .then(function(data){
-     writeToFile("Readme.md", generateMarkdown(data));
+     writeToFile("NewReadme.md", generateMarkdown(data));
      console.log(data)
  })
 
